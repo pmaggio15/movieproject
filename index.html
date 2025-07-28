@@ -28,13 +28,13 @@
                    <h1 class="movie__theater--title">SkyView Cinema</h1>
                    <p class="intro__para">Where stories come to life and memories are made. Crystal-clear screens, booming surround sound, and popcorn that’s worth the trip alone. Whether it’s a family night out, a date, or a solo escape, we’ve got the perfect seat waiting for you.</p>
                    <div class="search__box">
-                           <input type="text" placeholder="View Venues Here..." class="search__input" onchange="searchChange(event)">
+                           <input type="text" 
+                           placeholder="Search Movies & TV Titles..." 
+                           class="search__input" 
+                           onchange="searchChange(event)">
                            <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <label class="slider" for="rating">Movie Ratings</label>
-                            <input class="slider" type="range" id="rating" name="rating" min="1" max="10" value=""1>
-                            <!-- <span class="slider" id="rating-value">5</span> //figure this out -->
-               </div>
+                </div>
            </div>
        </header>
    </section>
@@ -93,7 +93,9 @@
                    <h2 class="section__title">
                        Why Viewers Can’t Get Enough
                    </h2>
-                   <div class="movies"></div>
+                   <div class="movies">
+                     
+                   </div>
                </div>
            </div>
        </section>                
