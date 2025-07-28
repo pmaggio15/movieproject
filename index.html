@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=200, initial-scale=1.0">
+   <title>Movies</title>
+   <link rel="stylesheet" href="./style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <script src="index.js" defer></script>
+</head>
+<body>
+   <section id="landing">
+       <nav>
+           <div class="nav__container">
+               <ul class="nav__links">
+                   <li><a href="#" class="nav__link">HOME</a></li>                 
+                   <li><a href="#" class="nav__link">MOVIES</a></li>
+                   <li><a href="#" class="nav__link">CONTACT</a></li>
+               </ul>
+           </div>
+       </nav>
+       <header>
+           <div class="header__container">
+               <div class="header__description">
+                   <figure>
+                       <img class="logo" src="./Assets/camera.jpeg" alt="">
+                   </figure>
+                   <h1 class="movie__theater--title">SkyView Cinema</h1>
+                   <p class="intro__para">Where stories come to life and memories are made. Crystal-clear screens, booming surround sound, and popcorn that’s worth the trip alone. Whether it’s a family night out, a date, or a solo escape, we’ve got the perfect seat waiting for you.</p>
+                   <div class="search__box">
+                           <input type="text" placeholder="View Venues Here..." class="search__input" onchange="searchChange(event)">
+                           <i class="fa-solid fa-magnifying-glass"></i>
+                   </div>
+               </div>
+           </div>
+       </header>
+   </section>
+   <main>
+       <section id="highlights">
+           <div class="container">
+               <div class="row">
+                   <h2 class="section__title">Movies That Will Keep You Coming Back</h2>
+               </div>
+               <div class="highlight__wrapper">
+                   <div class="highlight">
+                       <div class="highlight__img">
+                           <figure>
+                               <img src="./Assets/movies.jpeg" alt="">
+                           </figure>
+                       </div>
+                       <h3 class="highlight__subtitle">
+                           Critics' Choice, Crowd Favorites
+                       </h3>
+                       <p class="highlight__para">
+                          From chart-topping blockbusters to critically acclaimed hits, we bring you the top movies.
+                       </p>
+                   </div>
+                     <div class="highlight">
+                       <div class="highlight__img">
+                          <figure>
+                           <img src="./Assets/popcorn.jpeg" alt="">
+                          </figure>
+                       </div>
+                       <h3 class="highlight__subtitle">
+                           Snack Attack: Popcorn Edition
+                       </h3>
+                       <p class="highlight__para">
+                          Handcrafted for maximum crunch, bursting with bold flavor, and made with real ingredients.
+                       </p>
+                   </div>
+                     <div class="highlight">
+                       <div class="highlight__img">
+                           <figure>
+                               <img src="./Assets/friends night.jpeg" alt="">
+                           </figure>
+                       </div>
+                       <h3 class="highlight__subtitle">
+                          Big Screens, Big Smiles
+                       </h3>
+                       <p class="highlight__para">
+                           Nothing like the magic of the movies — towering screens, surround sound, and your first buttery bite of popcorn.
+                       </p>
+                   </div>
+               </div>
+           </div>
+       </section>
+       <section id="features">
+           <div class="container">
+               <div class="row">
+                   <h2 class="section__title">
+                       Why Viewers Can’t Get Enough
+                       <select id="filter" onchange="filterVenues(event)">
+                           <option value="" disabled selected>Sort</option>
+                           <option value="A_TO_Z">Venue 'A to Z'</option>
+                           <option value="LOW_TO_HIGH">Price 'Low to High'</option>
+                           <option value="RATING">Rating 'High to Low'</option>
+                       </select>
+                   </h2>
+                   <div class="venues">
+                   </div>
+               </div>
+           </div>
+       </section>                
+       <section id="footer">
+           <div class="footer__container">
+               <div class="row row__column">
+                   <div class="footer__list">
+                       <a href="" class="footer__link">HOME</a>
+                       <a href="" class="footer__link no-cursor">ABOUT</a>
+                       <a href="" class="footer__link">VENUES</a>
+                       <a href="" class="footer__link no-cursor">CONTACT</a>
+                   </div>
+                   <div class="footer__copyright">Copyright &copy; 2005 Whispering Pines Retreat</div>
+               </div>
+           </div>
+       </footer>
+   </main>
+</body>
+</html>
