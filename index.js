@@ -1,72 +1,65 @@
-// const venues = [
-//   "The 1915 Barn",
-//   "Lazy B Barn",
-//   "Star M Bar",
-//   "Gallatin River Hideaway Wedding And Event Venues",
-//   "Woodlands At Cottonwood Canyon",
-//   "The Chateau Event Center",
-// ];
-const venueWrapper = document.querySelector('.search__box')
 
-function renderVenue(filter) {
-const venueWrapper = document.querySelector('.venues');
+const movieWrapper = document.querySelector('.search__box')
 
-const venue = getVenue();
+function renderMovie(filter) {
+const movieWrapper = document.querySelector('.movies');
+
+const movie = getMovie();
 
 if(filter === 'A_TO_Z') {
-    venue.sort((a, b) => a.title.localeCompare(b.title));
+    movie.sort((a, b) => a.title.localeCompare(b.title));
 }
 else if (filter === 'LOW_TO_HIGH') {
-    venue.sort((a, b) => a.originalPrice - b.originalPrice);
+    movie.sort((a, b) => a.originalPrice - b.originalPrice);
 }
 else if (filter === 'RATING') {
-    venue.sort((a, b) => b.rating - a.rating);
+    movie.sort((a, b) => b.rating - a.rating);
 }
 
-const venueHtml = venue
-    .map((venues) => {
+const movieHtml = movie
+    .map((movies) => {
         return `
-                <div class="venue">
-                    <figure class="venue__img--wrapper">
-                        <img class="venue__img" src="${venues.url}" alt="">
-                        <div class="info__overlay">More information</div>
+                <div class="movie">
+                    <figure class="movie__img--wrapper">
+                        <img class="movie__img" src="${movies.url}" alt="">
+                        <div class="info__overlay">Buy Tickets Now</div>
                     </figure>
-                    <div class="venue__title">${venues.title}</div>
-                    <div class="venue__ratings">
-                        ${ratingsHTML(venues.rating)}
+                    <div class="movie__title">${movies.title}</div>
+                    <div class="movie__ratings">
+                        ${ratingsHTML(movies.rating)}
                     </div>
                     <h1 class="reviews">
                         <p class="review__para">
-                            ${venues.review}
+                            ${movies.review}
                         </p>
                     </h1>
                 </div>`;
         })
         .join("");
 
-venueWrapper.innerHTML = venueHtml;
+movieWrapper.innerHTML = movieHtml;
 }
 
 function searchChange(event) {
-    renderVenues(event.target.value)
+    renderMovies(event.target.value)
 }
 
-async function renderVenues(searchTerm) {
-    const response = await fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=345f8c7db76570b43779c3840b4d2e7a'); //need to add https: searchable s${}
+async function renderMovies(searchTerm) {
+    const response = await fetch('https://www.omdbapi.com/?s=${searchTerm}&apikey=${fdeb603c}'); //need to add https: searchable s${}
     const data = await response.json();
-    const venuesArr = data;
-    console.log(venuesArr);
-    venueWrapper.innerHTML = venuesArr.slice(0, 3).map((venues) => {
+    const moviesArr = data;
+    console.log(moviesArr);
+    movieWrapper.innerHTML = moviesArr.slice(0, 3).map((movie) => {
         return `
          <div class="venue">
                     <figure class="venue__img--wrapper">
-                        <img class="venue__img" src="${venues.url}" alt="">
+                        <img class="venue__img" src="${movie.url}" alt="">
                         <div class="info__overlay">More information</div>
                     </figure>
-                    <div class="venue__title">${venues.title}</div>
+                    <div class="venue__title">${movie.title}</div>
                     <h1 class="reviews">
                         <p class="review__para">
-                            ${venues.review}
+                            ${movie.review}
                         </p>
                     </h1>
                 </div>
@@ -86,16 +79,16 @@ function ratingsHTML(rating) {
     return ratingHTML;
 }
 
-function filterVenues (event) {
-    renderVenue(event.target.value);
+function filterMovies (event) {
+    renderMovie(event.target.value);
 }
 
 setTimeout (() => {
-    renderVenue();
+    renderMovie();
 });
 
 // FAKE DATA //
-function getVenue () {
+function getMovie () {
     return [        
         {
             id: 1,
