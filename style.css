@@ -40,8 +40,12 @@ nav {
 img {
     width: 100%;
     border: 8px solid white;
-    
 }
+
+.logo {
+    border-radius: 32px;
+}
+
 .logo:hover {
     width: 100%;
     transform: scale(1.03);
@@ -156,7 +160,7 @@ li {
     font-size: 16px;
     font-family: Tahoma;
     font-weight: 300;
-    margin-bottom: 72px;
+    margin-bottom: 54px;
     text-align: center;
     border-radius: 8px;
     padding: 8px 8px;
@@ -206,7 +210,10 @@ input:focus {
   outline: none;
 }
 
-
+.img__title {
+    border: 8px solid white;
+    border-radius: 8px;
+}
 
 /* 
 
@@ -264,7 +271,7 @@ button:active {
 }
 
 .container {
-    padding: 46px 0;
+    padding: 32px 0;
 }
 
 .row {
@@ -333,18 +340,6 @@ HIGHLIGHTS
     font-weight: 300;
 }
 
-.slider {
-    color: white;
-    padding-top: 24px;
-}
-.slide {
-    color: white;
-}
-input[type="range"] {
-  width: 300px;
-  accent-color: white;
-  margin: 10px 0;
-}
 /* 
 
 FEATURES
@@ -366,8 +361,9 @@ FEATURES
     flex-direction: column;
     align-items: center;
     width: calc(100%/3);
-    gap: 5px;                 /* space between images */
+    gap: 5px;                /* space between images */
     padding: 10px;
+    margin-top: 48px;
     flex-wrap: wrap;
 }
 
@@ -380,8 +376,7 @@ FEATURES
     position: relative;
 }
 .movie__img {
-    width: 173px;
-    height: 114px;
+    
     object-fit: cover;
 }
 .info__overlay {
@@ -408,48 +403,29 @@ FEATURES
 
 
 .movie__title {
-    width: 60%;
+    width: 100%;
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-top: 12px;
+    margin-bottom: 4px;
     justify-content: center;
     text-align: center;
     font-family: Tahoma;
     font-weight: bold;
     color: white;
 }
-.movie__title-1 {
-    width: 70%;
-    font-size: 16px;
-    margin-bottom: 8px;
-    justify-content: center;
-    text-align: center;
-    font-family: Tahoma;
-    font-weight: bold;
-    color: white;
-}
+
 
 .movie__title:hover {
     text-decoration: underline;
     cursor: not-allowed;
 }
 
-.movie__ratings {
-    margin-bottom: 12px;
+.release__date {
+    font-size: 12px;
+    width: 100%;
     color: white;
 }
 
-.release__date {
-    font-size: 12px;
-    width: 80%;
-    color: white;
-}
-/* .review__para {
-    text-align: center;
-    font-size: 12px;
-    padding: 8px;
-    border-radius: 12px;
-    color: white;
-} */
 
 /* 
 
@@ -488,10 +464,7 @@ FOOTER
     padding: 0 8px;
 }
 
-.img__state {
-    padding-top: 12px;
-    width: 145px;
-}
+
 
 
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */

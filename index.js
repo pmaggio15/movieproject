@@ -7,8 +7,8 @@ function searchChange(event) {
 async function renderMovies () {
     const response = await fetch('https://api.watchmode.com/v1/releases/?apiKey=CF6lCCsw66HpPjQduwhTskwF6OB6tCKbtWKPzBcH');
     const data = await response.json();
-    const moviesArr = data;
-    console.log(moviesArr);
+    const moviesArr = data.releases;
+    
     moviesWrapper.innerHTML = moviesArr.slice(0, 3).map((movie) => {
         return `
           <div class="movie">
