@@ -8,6 +8,16 @@
     background-color: #11120d;
 }
 
+.line{
+    border: 24px solid #232323;
+}
+
+.line__bottom {
+    border: 24px solid #232323;
+    margin-top: 32px;
+
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -332,6 +342,8 @@ HIGHLIGHTS
 
 .section__title {
     padding-bottom: 24px;
+    margin-top: 32px;
+    margin-bottom: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -376,9 +388,13 @@ FEATURES
     position: relative;
 }
 .movie__img {
-    
     object-fit: cover;
 }
+
+.movie__type {
+    display: none;
+}
+
 .info__overlay {
   position: absolute;
   bottom: 32px; left: 0; right: 0;
