@@ -216,17 +216,13 @@ li {
 }
 
 .fa-magnifying-glass {
-    color: black;
+    color: #232323;
     background: none;
     margin-left: 12px;
     cursor: pointer;
     position: absolute;
     transform: translateX(1000%);
     pointer-events: auto;
-}
-
-input::placeholder {
-    
 }
 
 input:focus {
