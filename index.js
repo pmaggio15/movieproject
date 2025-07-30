@@ -2,23 +2,22 @@ const moviesWrapper = document.querySelector(".movies")
 const searchInput  = document.getElementById('searchInput');
 const filterSelect = document.getElementById('filterSelect');
 
-function filterMovies(event) {
-  renderMovies(event.target.value);
-}
 
-function searchChange(event) {
-    renderMovies(event.target.value);
-}
-
-searchInput.addEventListener('input',  () => renderMovies(searchInput.value))
-filterSelect.addEventListener('change', () => renderMovies(searchInput.value))
+filterSelect.addEventListener('change', () => {
+  if (!filterSelect.value) {
+    moviesWrapper.innerHTML = ""
+  } else {
+    renderMovies(searchInput.value)
+  }
+})
 
 
 async function renderMovies (searchTerm = "") { 
+const sortType = filterSelect.value
 
-    if (!searchTerm.trim() && !filterSelect.value) {
-    moviesWrapper.innerHTML = ""
-    return
+if (!searchTerm.trim() && !sortType) {
+    moviesWrapper.innerHTML = "";
+    return;
   }
   
     const response = await fetch('https://api.watchmode.com/v1/releases/?apiKey=CF6lCCsw66HpPjQduwhTskwF6OB6tCKbtWKPzBcH');
@@ -33,10 +32,10 @@ async function renderMovies (searchTerm = "") {
   });
  
 
-  const sortValue = filterSelect.value;
-  if (sortValue === "MOVIE") {
+  
+  if (sortType === "MOVIE") {
     filtered = filtered.filter(m => m.tmdb_type === "movie");      
-  } else if (sortValue === "TV SHOWS") {
+  } else if (sortType === "TV SHOWS") {
     filtered = filtered.filter(m => m.tmdb_type === "tv");      
   }
 
@@ -54,5 +53,5 @@ async function renderMovies (searchTerm = "") {
             </div>
         `
     }).join("");
-    
+
 }

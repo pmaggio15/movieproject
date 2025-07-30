@@ -18,7 +18,8 @@ select#filterSelect {
     border-radius: 10px;
     backdrop-filter: blur(5px);
     cursor: pointer;
-    transform: translateX(350%) translateY(-300%);
+    transform: translateX(250%) translateY(-300%);
+    width: 15%;
 }
 
 .line{
@@ -192,7 +193,18 @@ li {
     border: 2px solid white;
 }
 
+#searchBtn:focus {
+  outline: none;
+  box-shadow: none;
+}
 
+#searchBtn,
+.search__input {
+  -webkit-tap-highlight-color: transparent;
+}
+.search__input:focus {
+  outline: none;
+}
 
 .search__box {
   display: flex;  

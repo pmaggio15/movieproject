@@ -28,21 +28,23 @@
                    <h1 class="movie__theater--title">SkyView Cinema</h1>
                    <p class="intro__para">Where stories come to life and memories are made. Crystal-clear screens, booming surround sound, and popcorn that’s worth the trip alone. Whether it’s a family night out, a date, or a solo escape, we’ve got the perfect seat waiting for you.</p>
                    <div class="search__box">
-                           <input 
-                                type="search"
-                                id="searchInput"
-                                placeholder="Search Movies: (Try: 'Beyond the Bar' or ‘Netflix’)" 
-                                class="search__input" 
-                                onchange="searchChange(event)">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
-                                <select id="filterSelect">
-                                    <option value="" disabled selected>SORT</option>
-                                    <option value="MOVIE">MOVIES</option>
-                                    <option value="TV SHOWS">TV SHOWS</option>
-                                </select>
-                        <div class="movies"></div>
+                        <input 
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search Movies: (Try: 'Beyond the Bar' or ‘Netflix’)" 
+                            class="search__input">
+                        <i id="searchBtn"
+                            class="fa-solid fa-magnifying-glass"
+                            onclick="renderMovies(searchInput.value)"
+                        ></i>
                     </div>
+                    <select id="filterSelect">
+                            <option value="" disabled selected>SORT</option>
+                            <option value=""></option>
+                            <option value="MOVIE">MOVIES</option>
+                            <option value="TV SHOWS">TV SHOWS</option>
+                    </select>
+                    <div class="movies"></div>
                 </div>
            </div>
        </header>
