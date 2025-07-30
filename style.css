@@ -8,6 +8,19 @@
     background-color: #11120d;
 }
 
+select#filter {
+    background: #ececec;
+    color: grey;
+    text-align: center;
+    font-size: 12px;
+    font-family: tahoma;
+    margin-top: 24px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transform: translateX(350%) translateY(-300%);
+}
+
 .line{
     border: 24px solid #232323;
 }

@@ -30,14 +30,18 @@
                    <div class="search__box">
                            <input 
                                 type="search"
-                                placeholder="Search Movies & TV Titles..." 
+                                placeholder="Search Movies: (Try: 'Beyond the Bar' or ‘Netflix’)" 
                                 class="search__input" 
                                 onchange="searchChange(event)">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
+                                </div>
+                                <select id="filter">
+                                    <option value="" disabled selected>SORT</option>
+                                    <option value="MOVIE">MOVIES</option>
+                                    <option value="TV SHOWS">TV SHOWS</option>
+                                </select>
                         </div>
                         <div class="movies">
-                           
                         </div>
                     </div>
                 </div>
