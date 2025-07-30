@@ -193,18 +193,6 @@ li {
     border: 2px solid white;
 }
 
-#searchBtn:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-#searchBtn,
-.search__input {
-  -webkit-tap-highlight-color: transparent;
-}
-.search__input:focus {
-  outline: none;
-}
 
 .search__box {
   display: flex;  
@@ -505,7 +493,29 @@ FOOTER
     padding: 0 8px;
 }
 
+/* BLUE BOX*/
 
+.search__input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.search__input[type="search"]::-webkit-search-decoration,
+.search__input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search__input,
+#searchBtn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search__input::selection {
+  background: transparent;
+}
+.search__input::-moz-selection {
+  background: transparent;
+}
 
 
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
