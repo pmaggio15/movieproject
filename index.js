@@ -21,8 +21,8 @@ async function getReleases() {
 }
 
 
-async function renderMovies (searchTerm = "") { 
-
+async function renderMovies (searchTerm = "") {
+appContent.style.display = "none";
 const sortType = filterSelect.value
 loadingEl.classList.add("active");
 moviesWrapper.innerHTML = "";
@@ -50,22 +50,8 @@ moviesWrapper.innerHTML = "";
     moviesWrapper.innerHTML = "<p>Failed to load movies.</p>";
   } finally {
     loadingEl.classList.remove("active");
+    appContent.style.display = "";
   }
-
-    searchBtn.addEventListener("click", () =>
-    renderMovies(searchInput.value)
-    );
-
-    searchInput.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        renderMovies(searchInput.value);
-    }
-    });
-
-    filterSelect.addEventListener("change", () =>
-    renderMovies(searchInput.value)
-    );
 
     if (!searchTerm.trim() && !sortType) {
         moviesWrapper.innerHTML = "";
@@ -107,3 +93,12 @@ moviesWrapper.innerHTML = "";
     }).join("");
 
 }
+
+searchBtn.addEventListener("click",  () => renderMovies(searchInput.value));
+searchInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    renderMovies(searchInput.value);
+  }
+});
+filterSelect.addEventListener("change", () => renderMovies(searchInput.value));
