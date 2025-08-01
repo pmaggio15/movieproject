@@ -259,6 +259,49 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+
+#loading {
+  display: none;           
+  position: absolute;     
+  top: 0;                  
+  left: 0;
+  width: 25%;
+  height: 25%;
+  background: rgba(255,255,255,0.8); 
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+body #loading.active {
+  display: flex;           
+}
+
+.fa-spinner {
+    animation: rotate 600ms infinite linear;
+}
+
+
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 0.4rem solid rgba(0,0,0,0.1);
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0);
+}
+100% {
+    transform: rotate(360deg);
+}
+
+
 }
 
 h1 {
@@ -512,6 +555,7 @@ FOOTER
 .search__input::-moz-selection {
   background: transparent;
 }
+
 
 
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
