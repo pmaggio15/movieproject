@@ -69,15 +69,21 @@ moviesWrapper.innerHTML = "";
     return (titleMatch || sourceMatch) && hasImage;
   });
  
-
-  
   if (sortType === "MOVIE") {
     filtered = filtered.filter(m => m.tmdb_type === "movie");      
   } else if (sortType === "TV SHOWS") {
     filtered = filtered.filter(m => m.tmdb_type === "tv");      
   }
 
-    
+  if (filtered.length === 0) {
+  moviesWrapper.innerHTML = `
+    <div class="no-results">
+      <p> "${searchTerm}" is not showing at our theater. Please try a different search term.</p>
+    </div>
+  `;
+  return;
+    } 
+
     moviesWrapper.innerHTML = filtered.slice(0, 9).map((movie) => {
         return `
           <div class="movie">
@@ -102,3 +108,4 @@ searchInput.addEventListener("keydown", e => {
   }
 });
 filterSelect.addEventListener("change", () => renderMovies(searchInput.value));
+
