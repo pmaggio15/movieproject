@@ -24,6 +24,7 @@ select#filterSelect {
 
 .line{
     border: 24px solid #232323;
+    width: 1440px;
 }
 
 .line__bottom {
@@ -221,7 +222,7 @@ li {
     margin-left: 12px;
     cursor: pointer;
     position: absolute;
-    transform: translateX(1000%);
+    transform: translateX(165px);
     pointer-events: auto;
 }
 
@@ -528,6 +529,21 @@ FOOTER
 .footer__link {
     padding: 0 8px;
 }
+#attribution {
+  text-align: center;
+  font-size: 12px;
+  font-family: tahoma;
+  color: #ffffff;
+}
+
+#attribution a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#attribution a:hover {
+  text-decoration: underline;
+}
 
 /* BLUE BOX*/
 
@@ -642,8 +658,8 @@ FOOTER
 /* Tablets / large smartphones (769px - 1024px) */
 @media (max-width: 1024px) {
   .search__input {
-    width: 320px;
-    font-size: 16px;
+    width: 400px;
+    font-size: 14px;
   }
 
   .movie {
@@ -654,4 +670,10 @@ FOOTER
     width: 30%;
     transform: translateX(0%) translateY(0%);
   }
+  .intro__para {
+    width: 100%;
+  }
+
 }
+
+

@@ -1,8 +1,24 @@
 const moviesWrapper = document.querySelector(".movies");
 const searchInput  = document.getElementById('searchInput');
 const filterSelect = document.getElementById('filterSelect');
-const loadingEl = document.getElementById("loading")
-const searchBtn    = document.getElementById("searchBtn")
+const loadingEl = document.getElementById("loading");
+const searchBtn    = document.getElementById("searchBtn");
+const appContent = document.getElementById("appContent");
+const attribution = document.createElement("div");
+
+
+attribution.id = "attribution";
+attribution.innerHTML = `Streaming data powered by <a href="https://www.watchmode.com" target="_blank">Watchmode.com</a>`;
+document.body.appendChild(attribution);
+
+
+let debounceTimeout;
+function debounceRenderMovies(term) {
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(() => {
+    renderMovies(term);
+  }, 1000);  // ⬅️ increase delay to reduce 429 rate-limits
+}
 
 filterSelect.addEventListener('change', () => {
   if (!filterSelect.value) {
@@ -14,7 +30,7 @@ filterSelect.addEventListener('change', () => {
 
 async function getReleases() {
   await new Promise(res => setTimeout(res, 1000));
-  const response = await fetch("https://api.watchmode.com/v1/releases/?apiKey=CF6lCCsw66HpPjQduwhTskwF6OB6tCKbtWKPzBcH");
+  const response = await fetch("https://api.watchmode.com/v1/releases/?apiKey=hAU9lCluAtDwEpHsN29dAdcv1tsjQw6qV3A9WvFX");
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const data = await response.json();
   return data.releases;
@@ -23,7 +39,6 @@ async function getReleases() {
 
 async function renderMovies (searchTerm = "") {
 appContent.style.display = "none";
-const sortType = filterSelect.value
 loadingEl.classList.add("active");
 moviesWrapper.innerHTML = "";
 
@@ -38,53 +53,23 @@ moviesWrapper.innerHTML = "";
         m.source_name.toLowerCase().includes(term)
       );
     }
-    const sortType = filterSelect.value;
-    if (sortType === "MOVIE")      list = list.filter(m => m.tmdb_type==="movie");
-    else if (sortType === "TV SHOWS") list = list.filter(m => m.tmdb_type==="tv");
 
-    moviesWrapper.innerHTML = list.slice(0,9).map(m=>`
-      <div class="movie">…</div>
-    `).join("");
-
-  } catch (err) {
-    moviesWrapper.innerHTML = "<p>Failed to load movies.</p>";
-  } finally {
-    loadingEl.classList.remove("active");
-    appContent.style.display = "";
-  }
-
-    if (!searchTerm.trim() && !sortType) {
-        moviesWrapper.innerHTML = "";
-        return;
+    const sortType = filterSelect.value
+    if (sortType === "MOVIE") {
+    list = list.filter(m => m.tmdb_type === "movie");
+    } else if (sortType === "TV SHOWS") {
+    list = list.filter(m => m.tmdb_type === "tv");
     }
-  
-    const response = await fetch('https://api.watchmode.com/v1/releases/?apiKey=CF6lCCsw66HpPjQduwhTskwF6OB6tCKbtWKPzBcH');
-    const data = await response.json();
-    const moviesArr = data.releases;
-    const term     = searchTerm.trim().toLowerCase();
-    let filtered = moviesArr.filter(movie => {
-    const titleMatch  = movie.title.toLowerCase().includes(term);
-    const sourceMatch = movie.source_name.toLowerCase().includes(term);
-    const hasImage     = Boolean(movie.poster_url);
-    return (titleMatch || sourceMatch) && hasImage;
-  });
- 
-  if (sortType === "MOVIE") {
-    filtered = filtered.filter(m => m.tmdb_type === "movie");      
-  } else if (sortType === "TV SHOWS") {
-    filtered = filtered.filter(m => m.tmdb_type === "tv");      
-  }
+    if (list.length === 0) {
+      moviesWrapper.innerHTML = `
+        <div class="no-results">
+          <p>"${searchTerm}" is not showing at our theater. Please try a different search term.</p>
+        </div>
+      `;
+      return;
+    }
 
-  if (filtered.length === 0) {
-  moviesWrapper.innerHTML = `
-    <div class="no-results">
-      <p> "${searchTerm}" is not showing at our theater. Please try a different search term.</p>
-    </div>
-  `;
-  return;
-    } 
-
-    moviesWrapper.innerHTML = filtered.slice(0, 9).map((movie) => {
+    moviesWrapper.innerHTML = list.slice(0, 9).map((movie) => {
         return `
           <div class="movie">
                 <figure class="movie__img--wrapper">
@@ -98,6 +83,15 @@ moviesWrapper.innerHTML = "";
         `
     }).join("");
 
+
+  } catch (err) {
+    console.error("renderMovies errors:", err);
+    moviesWrapper.innerHTML = "<p>Failed to load movies.</p>";
+  } finally {
+    loadingEl.classList.remove("active");
+    appContent.style.display = "";
+  }
+    
 }
 
 searchBtn.addEventListener("click",  () => renderMovies(searchInput.value));
@@ -107,5 +101,3 @@ searchInput.addEventListener("keydown", e => {
     renderMovies(searchInput.value);
   }
 });
-filterSelect.addEventListener("change", () => renderMovies(searchInput.value));
-
